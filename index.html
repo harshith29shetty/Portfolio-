@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshith Shetty — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F9;
+    --bg-panel:#FFFFFF;
+    --ink:#161B22;
+    --ink-soft:#5B6472;
+    --line:#E2E6EB;
+    --accent:#0F9B8E;
+    --accent-dim:#E4F5F3;
+    --amber:#F2A93B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:rgba(246,247,249,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+  nav .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;}
+  nav .logo span{color:var(--accent);}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+  nav ul a{
+    text-decoration:none;color:var(--ink-soft);font-size:0.92rem;font-weight:500;
+    transition:color .15s ease;
+  }
+  nav ul a:hover{color:var(--accent);}
+  @media(max-width:640px){ nav ul{gap:14px;} nav ul a{font-size:0.82rem;} }
+
+  /* HERO */
+  header.hero{padding:88px 0 64px;}
+  .prompt-line{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.85rem;color:var(--ink-soft);
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:8px 14px;
+    margin-bottom:28px;
+  }
+  .prompt-line .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .caret{
+    display:inline-block;width:8px;height:1.1em;background:var(--accent);
+    margin-left:2px;vertical-align:text-bottom;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  h1.name{font-size:clamp(2.3rem,5.5vw,3.6rem);font-weight:700;}
+  .role{
+    margin-top:10px;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--accent);font-weight:600;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .lede{margin-top:20px;max-width:600px;color:var(--ink-soft);font-size:1.02rem;}
+  .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:8px;font-weight:600;font-size:0.92rem;
+    text-decoration:none;transition:transform .15s ease, background .15s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{background:var(--accent);transform:translateY(-1px);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+
+  /* SECTION SHELL */
+  section{padding:56px 0;border-top:1px solid var(--line);}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;
+  }
+  section h2{font-size:1.7rem;margin-bottom:28px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;}
+  @media(max-width:700px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--ink-soft);margin:0 0 14px;}
+  .edu-card{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;
+    padding:18px 20px;margin-bottom:14px;
+  }
+  .edu-card .school{font-weight:600;font-family:'Space Grotesk',sans-serif;}
+  .edu-card .meta{font-size:0.85rem;color:var(--ink-soft);margin-top:4px;}
+  .edu-card .cgpa{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:0.85rem;margin-top:6px;}
+
+  /* SKILLS */
+  .skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:700px){.skill-groups{grid-template-columns:1fr 1fr;}}
+  @media(max-width:460px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group h3{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-bottom:12px;font-family:'Inter',sans-serif;font-weight:600;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:0.8rem;
+    background:var(--accent-dim);color:#0B6E64;
+    padding:5px 10px;border-radius:6px;
+  }
+
+  /* PROJECTS */
+  .project-card{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;
+    padding:26px;margin-bottom:20px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .project-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .project-card .phead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .project-card h3{font-size:1.15rem;}
+  .project-card .stack{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);margin-top:6px;}
+  .project-card p.desc{color:var(--ink-soft);margin:12px 0 14px;font-size:0.95rem;}
+  .project-card a.repo-link{
+    font-size:0.85rem;font-weight:600;color:var(--ink);text-decoration:none;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .project-card a.repo-link:hover{color:var(--accent);}
+
+  /* CERTS */
+  .cert-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;}
+  @media(max-width:600px){.cert-list{grid-template-columns:1fr;}}
+  .cert-list li{
+    display:flex;align-items:baseline;gap:10px;color:var(--ink-soft);font-size:0.95rem;
+    padding:10px 0;border-bottom:1px dashed var(--line);
+  }
+  .cert-list li::before{content:"▹";color:var(--accent);font-weight:700;}
+
+  /* CONTACT */
+  .contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
+  .contact-chip{
+    display:flex;align-items:center;gap:8px;
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;
+    padding:10px 16px;font-size:0.9rem;text-decoration:none;color:var(--ink);
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .contact-chip:hover{border-color:var(--accent);color:var(--accent);}
+
+  footer{padding:32px 0 48px;text-align:center;color:var(--ink-soft);font-size:0.85rem;font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">harshith<span>.</span>shetty</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certs">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="prompt-line"><span class="dot"></span>whoami<span class="caret"></span></div>
+    <h1 class="name">Harshith Shetty</h1>
+    <div class="role">MCA Student · Aspiring Software &amp; AI Enthusiast</div>
+    <p class="lede">Big Data Analytics &amp; Cyber Security specialization. I build with Python, React, and Flask, and enjoy exploring how AI tools can speed up learning and shipping real projects.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-ghost" href="mailto:harshith.shetty2911@gmail.com">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">01 — About</div>
+    <h2>Education &amp; Background</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm an MCA student specializing in Big Data Analytics and Cyber Security, currently exploring AI, machine learning, and web development. I like turning coursework into working projects and picking up new AI tools along the way.</p>
+        <p>Currently based in a hostel, balancing coursework with side projects — from a React chatbot to an ML-powered campus complaint system.</p>
+      </div>
+      <div>
+        <div class="edu-card">
+          <div class="school">MCA — Srinivas University</div>
+          <div class="meta">2025 – 2027 · SIT Campus, Mangaluru</div>
+          <div class="cgpa">CGPA: 8.71</div>
+        </div>
+        <div class="edu-card">
+          <div class="school">Bachelor's Degree — Mangalore University</div>
+          <div class="meta">Completed 2025</div>
+          <div class="cgpa">CGPA: 8.34 · 84.31%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">02 — Skills</div>
+    <h2>Technical Toolkit</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <div class="tag-row">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">GitHub Desktop</span>
+          <span class="tag">Flask</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>AI &amp; Productivity</h3>
+        <div class="tag-row">
+          <span class="tag">ChatGPT</span>
+          <span class="tag">Claude</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">MS Office</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">03 — Projects</div>
+    <h2>Things I've Built</h2>
+
+    <div class="project-card">
+      <div class="phead">
+        <div>
+          <h3>Chatbot Project</h3>
+          <div class="stack">React.js · JavaScript · HTML · CSS</div>
+        </div>
+      </div>
+      <p class="desc">A simple, interactive chatbot web application with a clean conversational UI, built to explore front-end state management and component design in React.</p>
+      <a class="repo-link" href="https://github.com/harshith29shetty/chatbot" target="_blank" rel="noopener">↗ View on GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <div class="phead">
+        <div>
+          <h3>Smart Campus Complaint System</h3>
+          <div class="stack">HTML · CSS · JavaScript · Python · Flask · Machine Learning</div>
+        </div>
+      </div>
+      <p class="desc">A web platform where students submit and track campus complaints. A machine learning model automatically categorizes each complaint and predicts its priority to speed up resolution.</p>
+      <a class="repo-link" href="https://github.com/harshith29shetty" target="_blank" rel="noopener">↗ View on GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="eyebrow">04 — Certifications</div>
+    <h2>Certifications &amp; Courses</h2>
+    <ul class="cert-list">
+      <li>Web Application Development — HTML, CSS &amp; JavaScript</li>
+      <li>Advanced Python Programming</li>
+      <li>Ethical Hacking</li>
+      <li>Google AI-ML</li>
+      <li>Cybersecurity Virtual Internship</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">05 — Contact</div>
+    <h2>Let's Connect</h2>
+    <p style="color:var(--ink-soft);max-width:520px;">Open to opportunities, collaborations, and conversations about AI, web dev, or anything I'm currently building.</p>
+    <div class="contact-row">
+      <a class="contact-chip" href="mailto:harshith.shetty2911@gmail.com">✉ harshith.shetty2911@gmail.com</a>
+      <a class="contact-chip" href="tel:+918618178859">☎ +91 86181 78859</a>
+      <a class="contact-chip" href="https://github.com/harshith29shetty" target="_blank" rel="noopener">⌥ GitHub</a>
+      <a class="contact-chip" href="https://linkedin.com/in/harshith-shetty-488232283" target="_blank" rel="noopener">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  “Always learning, building, and exploring new technologies.”
+</footer>
+
+</body>
+</html>
